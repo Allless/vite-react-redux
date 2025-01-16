@@ -5,10 +5,14 @@ import './index.css';
 import App from '../components/App/App.tsx';
 import { store } from '../redux/store.ts';
 
-createRoot(document.getElementById('root')!).render(
+const rootElement = document.getElementById('root');
+
+if (rootElement) {
+  createRoot(rootElement).render(
     <StrictMode>
-        <Provider store={store}>
-            <App />
-        </Provider>
+      <Provider store={store}>
+        <App />
+      </Provider>
     </StrictMode>
-);
+  );
+}
