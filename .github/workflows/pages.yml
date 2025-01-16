@@ -11,6 +11,7 @@ permissions:
 
 jobs:
   deploy:
+    name: Deploy
     runs-on: ubuntu-latest
 
     steps:
@@ -24,14 +25,13 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Build the app
         run: npm run build
 
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v4
-        # env:
-        #   name: github-pages
-        #   url: ${{ steps.deploy.outputs.page_url }}
-        #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
