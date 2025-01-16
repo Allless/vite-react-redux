@@ -1,7 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
+import { reducer as counterReducer } from './slices/counter';
 
 export const store = configureStore({
-    reducer: {},
+  reducer: {
+    counter: counterReducer
+  }
 });
 
 export type AppStore = typeof store;
